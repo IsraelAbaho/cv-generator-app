@@ -72,6 +72,10 @@ body {
   }
 }
 
+.cvContainer{
+margin-top: 2rem;
+}
+
 .introTxt {
   margin-bottom: 1rem;
   font-size: 20px;
@@ -305,12 +309,6 @@ body {
 }
 
 
-
-@media screen and (max-width: 480px) {
-
-
-
-}
 @media screen and (min-width: 900px) {
 .top{
 grid-template-columns: repeat(3, 1fr);

@@ -74,6 +74,10 @@ body {
   }
 }
 
+.cvContainer {
+  margin-top: 2rem;
+}
+
 .introTxt {
   margin-bottom: 1rem;
   font-size: 20px;
