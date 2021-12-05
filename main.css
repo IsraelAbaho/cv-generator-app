@@ -74,10 +74,6 @@ body {
   }
 }
 
-.cvContainer {
-  margin-top: 2rem;
-}
-
 .introTxt {
   margin-bottom: 1rem;
   font-size: 20px;
@@ -103,6 +99,7 @@ body {
   border-radius: 50%;
   overflow: hidden;
   margin: 1rem auto 2rem;
+  border: 10px solid rgba(236, 236, 236, 0.808);
 }
 
 .top .imgDiv:hover #imgBtn {
@@ -125,13 +122,15 @@ body {
   width: 100%;
   background: #000000a6;
   text-align: center;
-  padding: 0.7rem;
-  bottom: -9px;
+  padding: 0.7rem 0.7rem .8rem;
+  bottom: -10px;
   left: 0;
   color: var(--secondaryColor);
   cursor: pointer;
   font-size: 15px;
   display: none;
+  -webkit-transition: display 0.5s ease;
+  transition: display 0.5s ease;
 }
 
 .top .name div {
@@ -240,14 +239,16 @@ body {
   height: 200px;
 }
 
-.profile .skills .flex,
-.profile .hobbies .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+@media screen and (min-width: 480px) {
+  .profile .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1rem;
+  }
 }
 
 .profile .skills button,
@@ -306,6 +307,284 @@ body {
   background: var(--primaryColor);
 }
 
+.openner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(12, 14, 44, 0.698);
+}
+
+.openner .opennerContent {
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 80%;
+  color: #2a2a2ace;
+  background: var(--secondaryColor);
+}
+
+@media screen and (min-width: 1080px) {
+  .openner .opennerContent {
+    width: 60%;
+  }
+}
+
+.openner .opennerContent h1 {
+  padding-bottom: 1rem;
+  line-height: 2rem;
+  color: red;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 450px) {
+  .openner .opennerContent h1 {
+    font-size: 30px;
+    line-height: 2.4rem;
+  }
+}
+
+.openner .opennerContent h5 {
+  font-size: 15px;
+}
+
+@media screen and (min-width: 480px) {
+  .openner .opennerContent h5 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .openner .opennerContent h5 {
+    font-size: 25px;
+  }
+}
+
+.openner .opennerContent p {
+  margin: 1rem auto 0;
+  padding-top: 0.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+@media screen and (min-width: 1080px) {
+  .openner .opennerContent p {
+    width: 60%;
+    line-height: 2.4rem;
+  }
+}
+
+.jobMessage {
+  display: none;
+  color: red;
+}
+
+.ColMessage {
+  display: none;
+  color: red;
+}
+
+.cvContainer {
+  margin-top: 2rem;
+  background-color: rgba(204, 204, 204, 0.157);
+}
+
+.cvContainer .titles {
+  margin-bottom: 1rem;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.cvContainer .titles::after {
+  content: '';
+  position: absolute;
+  background-color: #8f8f8f;
+  height: 2px;
+  width: 50%;
+  bottom: -5px;
+  left: 0;
+}
+
+@media screen and (min-width: 960px) {
+  .cvContainer .cvTop {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cvContainer .cvTop .cvTopDiv {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  background-color: antiquewhite;
+}
+
+.cvContainer .cvTop .cvTopDiv img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.cvContainer .cvTop .cvNameDiv {
+  margin: 1rem 0;
+}
+
+@media screen and (min-width: 960px) {
+  .cvContainer .cvTop .cvNameDiv {
+    font-size: 24px;
+  }
+}
+
+.cvContainer .cvTop .cvNameDiv .cvProff p {
+  font-size: 25px;
+}
+
+@media screen and (min-width: 960px) {
+  .cvContainer .cvTop .cvNameDiv .cvProff p {
+    font-size: 30px;
+  }
+}
+
+.cvContainer .cvTop .cvContactDiv div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.cvContainer .cvTop .cvContactDiv div p {
+  font-size: 18px;
+}
+
+@media screen and (min-width: 960px) {
+  .cvContainer .cvTop .cvContactDiv div p {
+    line-height: 2rem;
+    font-size: 20px;
+  }
+}
+
+.cvContainer .cvExperienceDiv {
+  padding: 10px;
+}
+
+.cvContainer .cvExperienceDiv .companyDetails {
+  margin-bottom: .6rem;
+}
+
+.cvContainer .cvExperienceDiv .companyDetails div p {
+  font-size: 18px;
+}
+
+.cvContainer .cvExperienceDiv .companyDetails .companyName {
+  font-weight: 500;
+}
+
+.cvContainer .cvExperienceDiv .dates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  gap: 1rem;
+}
+
+.cvContainer .cvExperienceDiv .dates::after {
+  content: '';
+  height: 3px;
+  width: 6px;
+  background: var(--primaryColor);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-2.5px);
+          transform: translateX(-2.5px);
+}
+
+.cvContainer .cvExperienceDiv .dates div {
+  padding: 8px;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  font-size: 15px;
+}
+
+.cvContainer .cvExperienceDiv .jobDesc {
+  margin-top: .5rem;
+  opacity: .9;
+}
+
+.cvContainer .cvProfileSection {
+  background-color: rgba(185, 184, 184, 0.157);
+  padding: 10px;
+}
+
+.cvContainer .cvProfileSection .pSummary p {
+  margin-bottom: 1rem;
+  opacity: .9;
+}
+
+.cvContainer .cvProfileSection .colCert h4 + p {
+  margin-bottom: 10px;
+}
+
+.cvContainer .cvProfileSection .collegeDatesDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.cvContainer .cvProfileSection .collegeDatesDiv::after {
+  content: '';
+  height: 3px;
+  width: 6px;
+  background: var(--primaryColor);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-2.5px);
+          transform: translateX(-2.5px);
+}
+
+.cvContainer .cvProfileSection .collegeDatesDiv div {
+  padding: 8px;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  font-size: 15px;
+}
+
+.cvContainer .cvProfileSection .skillHobbyDiv, .cvContainer .cvProfileSection .personSkills {
+  margin-bottom: 2rem;
+}
+
 @media screen and (min-width: 480px) {
   .gridCol {
     display: -ms-grid;
@@ -329,7 +608,6 @@ body {
 @media screen and (max-width: 350px) {
   p {
     width: 200px;
-    margin: auto;
   }
 }
 
