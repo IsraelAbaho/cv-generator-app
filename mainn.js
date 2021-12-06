@@ -30,15 +30,51 @@ file.addEventListener('change', function(){
 })
 
 
-
-
 // EVENTLISTENER -----
 mainButton.addEventListener('click', submitForm)
 
+const allInputs = document.querySelectorAll('.input');
 
+//a list to hold the inputs that need values
+let needInputArray = [];
+//variable to hold the index number of the input to remove from our list
+let index;
+
+// For each input add a listener to see if the input is empty
+// If it is empty, push it to our list, and add a red border to the input
+// If it is not empty, set the border to none and remove it from the list
+allInputs.forEach(input => {
+  //push each input to the list that needs values
+  needInputArray.push(input);
+  //give red border
+  input.style.border = '2px solid red'
+  //add event listener to each input
+  input.addEventListener('input', () => {
+    // if we get input set the border to none
+    input.style.border = 'none';
+    //find the index of the input in the list
+    index = needInputArray.indexOf(input);
+    // if the index is not -1, remove it from the list
+    if (index > -1) {
+      // use splice method to go to the index and remove 1 item from that index
+      needInputArray.splice(index, 1);
+      //so you can see the list being updated in the browser console dev tools
+      console.log(needInputArray);
+    }
+    // if the list is empty,
+    if (needInputArray.length === 0) {
+      // set the button to be enabled so we can submit the form
+      mainButton.removeAttribute('disabled', 'false');
+      console.log(mainButton);
+    }
+  });
+});
 
 function submitForm(e){
-    e.preventDefault()
+  e.preventDefault()
+  // see if your button is working
+  // if it is, you can submit the form and see this message in the browser console
+  console.log('Form submitted');
     let btn = e.target;
 
     // personalDetails Declaration
@@ -69,7 +105,6 @@ function submitForm(e){
   
      
     // Profile section declaration
-    
     let profileSummary = btn.parentElement.parentElement.children[2].children[1].children[1].value
  
     let certificate = btn.parentElement.parentElement.children[2].children[2].children[0].children[0].children[1].value
@@ -84,24 +119,16 @@ function submitForm(e){
   
     let pHobby = btn.parentElement.parentElement.children[2].children[3].children[0].children[1].children[1].children[0].value
    
-   
+  
 
     // Hello please i have a problem, help me i want if any of the inputs is not filled, the button function doesnt work unless all are filled. I want the unfilled box to have a red border. I have written this code below but when i fill a single field still the function is complete which is not okay. CAN YOU HELP PLEASE
-  const allInputs = document.querySelectorAll('.input')
-  allInputs.forEach(inputt =>{
-    inputt.addEventListener('keydown', ()=>{
-      inputt.style.border = '2px solid transparent'
-    })
-  if(inputt.value === ''){
-    inputt.style.border = '2px solid red'
-  }
-  else{
-    // TOP SECTION DIVISIONS --------------------------
+  
+// TOP SECTION DIVISIONS --------------------------
 //Creating new div element for image.   
 let imageDiv = document.createElement('div')
 imageDiv.classList.add('cvTopDiv')
 imageDiv.innerHTML = `<img src="${pImage}">`
-//Divison to that contains both the name and title. 
+//Divison that contains both the name and title. 
 let pNameTitle = document.createElement('div')
 pNameTitle.classList.add('cvNameDiv')
 // Craeting name division element
@@ -123,19 +150,19 @@ contactDiv.classList.add('cvContactDiv')
 // Creating anew div element for tel Number
 let telNumber = document.createElement('div')
 telNumber.innerHTML =  `<i class='bx bx-phone icon' ></i>
-               <h4>${pTelNumber}</h4>`
+                        <h4>${pTelNumber}</h4>`
 contactDiv.appendChild(telNumber)   
 
 // Creating a new div element for the Email entered.
 let emialEntered = document.createElement('div')
 emialEntered.innerHTML = `  <i class='bx bx-mail-send icon'></i>
-<h4>${pEmail}</h4>`
+                            <h4>${pEmail}</h4>`
 contactDiv.appendChild(emialEntered) 
 
 // Creating a new div element for the Website link entered.
 let websiteEntered = document.createElement('div')
 websiteEntered.innerHTML = `  <i class='bx bx-globe icon'></i>
-<h4>${pWebsite}</h4>`
+                              <h4>${pWebsite}</h4>`
 contactDiv.appendChild(websiteEntered) 
 
 // Appending  all the divisions to the main section.
@@ -200,13 +227,13 @@ ${profileSummary}
 </p>` 
 
 
-// let us  create a new div to enter college name and certficate 
+//  a new div to enter college name and certficate 
 let collegeCert = document.createElement('div')
 collegeCert.classList.add('colCert')
 collegeCert.innerHTML = `<h3 class="titles">EDUCATION</h3><h4 class="cerficate">${certificate}</h4>
 <p class="college">${collegeName}</p>`
 
-// let us  create a new div to enter college start and end dates 
+//  a new div to enter college start and end dates 
 let collegeDates = document.createElement('div')
 collegeDates.classList.add('collegeDatesDiv')
 collegeDates.innerHTML = 
@@ -214,7 +241,7 @@ collegeDates.innerHTML =
 <div class="collegeEndDate">${colEndDate}</div>`
 
 
-// let us  create a new div to enter skills and Hobbies
+//  a new div to enter skills and Hobbies
 let skillHobby = document.createElement('div')
 skillHobby.classList.add('skillHobbyDiv')
 skillHobby.innerHTML = 
@@ -231,12 +258,7 @@ cvProfileSection.appendChild(pSummary)
 cvProfileSection.appendChild(collegeCert)
 cvProfileSection.appendChild(collegeDates)
 cvProfileSection.appendChild(skillHobby)
-
-
- }
- })
   
-}  
+};
  
-
 
