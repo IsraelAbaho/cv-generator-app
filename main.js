@@ -30,18 +30,79 @@ file.addEventListener('change', function(){
 })
 
 
-
-
 // EVENTLISTENER -----
-mainButton.addEventListener('click', submitForm)
+//change the event listener to operate a function that will make sure we
+// pass all the conditions to submit the form
+mainButton.addEventListener('click', canWeSubmitForm);
 
+const allInputs = document.querySelectorAll('.input');
 
+//a list to hold the inputs that need values
+let needInputArray = [];
+//variable to hold the index number of the input to remove from our list
+let index;
 
-function submitForm(e){
-    e.preventDefault()
-    let btn = e.target;
+// our function to see if we can submit
+function canWeSubmitForm(e) {
+  e.preventDefault();
+  // we can pass this value to the submitForm function later
+  const btn = e.target;
 
+  // Every time we try to submit the form, set all the button borders to none
+  // This way if they were red before, but are now filled in with value, they
+  // will not be red anymore
+  allInputs.forEach(input => {
+    input.style.border = 'none';
+    
+    // we push any input field that does not have value to an array
+    if (input.value === '') {
+      //push each input to the list that needs values
+      needInputArray.push(input);
+    }
+
+    // we also add an event listener to each input so that as we fill
+    // out the values we can do the following...
+    input.addEventListener('input', () => {
+      // remove the red border
+      input.style.border = 'none';
+      // get the index position of the input in our input array list that need values
+      index = needInputArray.indexOf(input);
+      if (index > -1) {
+        // use splice method to go to the index and remove that input from array
+        needInputArray.splice(index, 1);
+        //so you can see the list being updated in the browser console dev tools
+        console.log(needInputArray);
+      }
+    })
+  });
+
+  // every time the form submits it checks to see if the list of inputs that
+  // need values is empty. If it is not empty...
+  if (needInputArray.length !== 0) {
+    // then we give each input that IS in the array a red border, 
+    // because it has no value in it. Then it will stop at the else because the 
+    // first condition was met. Then we start the whole function over on the next
+    // click of the button.
+    needInputArray.forEach(input => {
+      //give red border
+      input.style.border = '2px solid red'
+    });
+
+    // However the else works if the need input array list IS empty...
+  } else {
+    // if it is then we call our submit form function and pass the button as a parameter(or argument)
+    // instead of the click event. This way you can still create your form based on the btn 
+    submitForm(btn);
+  }
+};
+
+function submitForm(btn){
+  
+  cvContainer.style.display = 'block'
+  mainButton.style.display = 'none'
     // personalDetails Declaration
+  // The btn is now passed as a parameter from the function call on line 95 instead of the original click 
+  // event, but it still works exactly the same.
     let pImage = btn.parentElement.parentElement.children[0].children[0].children[0].src
 
     let pName = btn.parentElement.parentElement.children[0].children[1].children[1].children[1].value
@@ -69,7 +130,6 @@ function submitForm(e){
   
      
     // Profile section declaration
-    
     let profileSummary = btn.parentElement.parentElement.children[2].children[1].children[1].value
  
     let certificate = btn.parentElement.parentElement.children[2].children[2].children[0].children[0].children[1].value
@@ -84,24 +144,13 @@ function submitForm(e){
   
     let pHobby = btn.parentElement.parentElement.children[2].children[3].children[0].children[1].children[1].children[0].value
    
-   
-
-    // Hello please i have a problem, help me i want if any of the inputs is not filled, the button function doesnt work unless all are filled. I want the unfilled box to have a red border. I have written this code below but when i fill a single field still the function is complete which is not okay. CAN YOU HELP PLEASE
-  const allInputs = document.querySelectorAll('.input')
-  allInputs.forEach(inputt =>{
-    inputt.addEventListener('keydown', ()=>{
-      inputt.style.border = '2px solid transparent'
-    })
-  if(inputt.value === ''){
-    inputt.style.border = '2px solid red'
-  }
-  else{
-    // TOP SECTION DIVISIONS --------------------------
+  
+// TOP SECTION DIVISIONS --------------------------
 //Creating new div element for image.   
 let imageDiv = document.createElement('div')
 imageDiv.classList.add('cvTopDiv')
 imageDiv.innerHTML = `<img src="${pImage}">`
-//Divison to that contains both the name and title. 
+//Divison that contains both the name and title. 
 let pNameTitle = document.createElement('div')
 pNameTitle.classList.add('cvNameDiv')
 // Craeting name division element
@@ -123,19 +172,19 @@ contactDiv.classList.add('cvContactDiv')
 // Creating anew div element for tel Number
 let telNumber = document.createElement('div')
 telNumber.innerHTML =  `<i class='bx bx-phone icon' ></i>
-               <h4>${pTelNumber}</h4>`
+                        <h4>${pTelNumber}</h4>`
 contactDiv.appendChild(telNumber)   
 
 // Creating a new div element for the Email entered.
 let emialEntered = document.createElement('div')
 emialEntered.innerHTML = `  <i class='bx bx-mail-send icon'></i>
-<h4>${pEmail}</h4>`
+                            <h4>${pEmail}</h4>`
 contactDiv.appendChild(emialEntered) 
 
 // Creating a new div element for the Website link entered.
 let websiteEntered = document.createElement('div')
 websiteEntered.innerHTML = `  <i class='bx bx-globe icon'></i>
-<h4>${pWebsite}</h4>`
+                              <h4>${pWebsite}</h4>`
 contactDiv.appendChild(websiteEntered) 
 
 // Appending  all the divisions to the main section.
@@ -181,14 +230,10 @@ let jobDesc = document.createElement('div')
 jobDesc.classList.add('jobDesc')
 jobDesc.innerHTML = `${jobDescription}`
 
-
-
-
 // // append company details to the main section
 experienceSection.appendChild(companyDetail)
 experienceSection.appendChild(dates)
 experienceSection.appendChild(jobDesc)
-
 
 //PROFILE DETAILS SECTION 
 // let us  create a new div to enter profile summary
@@ -199,22 +244,20 @@ pSummary.innerHTML = ` <h3 class="titles">Profile</h3>
 ${profileSummary}
 </p>` 
 
-
-// let us  create a new div to enter college name and certficate 
+//  a new div to enter college name and certficate 
 let collegeCert = document.createElement('div')
 collegeCert.classList.add('colCert')
 collegeCert.innerHTML = `<h3 class="titles">EDUCATION</h3><h4 class="cerficate">${certificate}</h4>
 <p class="college">${collegeName}</p>`
 
-// let us  create a new div to enter college start and end dates 
+//  a new div to enter college start and end dates 
 let collegeDates = document.createElement('div')
 collegeDates.classList.add('collegeDatesDiv')
 collegeDates.innerHTML = 
 ` <div class="collegeStartDate">${colStartDate}</div>
 <div class="collegeEndDate">${colEndDate}</div>`
 
-
-// let us  create a new div to enter skills and Hobbies
+//  a new div to enter skills and Hobbies
 let skillHobby = document.createElement('div')
 skillHobby.classList.add('skillHobbyDiv')
 skillHobby.innerHTML = 
@@ -226,17 +269,11 @@ ${pSkill}</div>
 ${pHobby}
 </div>`
 
-
 cvProfileSection.appendChild(pSummary)
 cvProfileSection.appendChild(collegeCert)
 cvProfileSection.appendChild(collegeDates)
 cvProfileSection.appendChild(skillHobby)
-
-
- }
- })
   
-}  
+};
  
-
 

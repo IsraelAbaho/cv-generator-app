@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@300;400;500&display=swap");
 :root {
-  --primaryColor: rgb(61, 61, 61);
+  --primaryColor: rgb(121, 157, 224);
   --secondaryColor: whitesmoke;
+  --inputColor: #d6e6e7a4;
 }
 
 * {
@@ -10,10 +11,13 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "M PLUS Code Latin", sans-serif;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 section {
   margin-bottom: 3rem;
+  color: #0a346b;
 }
 
 .grid {
@@ -36,7 +40,7 @@ textarea {
   border-radius: 5px;
   border: 2px solid transparent;
   width: 100%;
-  background: #dfdede;
+  background: var(--inputColor);
 }
 
 input:focus {
@@ -88,8 +92,21 @@ body {
   color: var(--secondaryColor);
 }
 
+@media screen and (min-width: 1080px) {
+  .intro h1 {
+    font-size: 45px;
+  }
+}
+
 .intro p {
   padding: 10px 0 0;
+  margin: auto;
+}
+
+@media screen and (min-width: 1080px) {
+  .intro p {
+    font-size: 25px;
+  }
 }
 
 .top .imgDiv {
@@ -122,7 +139,7 @@ body {
   width: 100%;
   background: #000000a6;
   text-align: center;
-  padding: 0.7rem 0.7rem .8rem;
+  padding: 0.7rem 0.7rem 0.8rem;
   bottom: -10px;
   left: 0;
   color: var(--secondaryColor);
@@ -140,6 +157,7 @@ body {
 .top .name input {
   display: block;
   margin: 8px 0;
+  background: var(--inputColor);
 }
 
 .top .contact div {
@@ -162,6 +180,7 @@ body {
 
 .experienceDiv input {
   margin-top: 5px;
+  background: var(--inputColor);
 }
 
 .experienceDiv .date {
@@ -216,6 +235,7 @@ body {
 .profile input,
 .profile textarea {
   margin-top: 10px;
+  background: var(--inputColor);
 }
 
 .profile .date {
@@ -323,6 +343,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   background: rgba(12, 14, 44, 0.698);
+  display: none;
 }
 
 .openner .opennerContent {
@@ -398,6 +419,8 @@ body {
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
+  display: none;
+  color: #0a346b;
 }
 
 .cvContainer .titles {
@@ -409,7 +432,7 @@ body {
 }
 
 .cvContainer .titles::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: #8f8f8f;
   height: 2px;
@@ -490,7 +513,7 @@ body {
 }
 
 .cvContainer .cvExperienceDiv .companyDetails {
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
 }
 
 .cvContainer .cvExperienceDiv .companyDetails div p {
@@ -513,7 +536,7 @@ body {
 }
 
 .cvContainer .cvExperienceDiv .dates::after {
-  content: '';
+  content: "";
   height: 3px;
   width: 6px;
   background: var(--primaryColor);
@@ -532,8 +555,8 @@ body {
 }
 
 .cvContainer .cvExperienceDiv .jobDesc {
-  margin-top: .5rem;
-  opacity: .9;
+  margin-top: 0.5rem;
+  opacity: 0.9;
 }
 
 .cvContainer .cvProfileSection {
@@ -543,7 +566,7 @@ body {
 
 .cvContainer .cvProfileSection .pSummary p {
   margin-bottom: 1rem;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .cvContainer .cvProfileSection .colCert h4 + p {
@@ -563,7 +586,7 @@ body {
 }
 
 .cvContainer .cvProfileSection .collegeDatesDiv::after {
-  content: '';
+  content: "";
   height: 3px;
   width: 6px;
   background: var(--primaryColor);
@@ -581,7 +604,8 @@ body {
   font-size: 15px;
 }
 
-.cvContainer .cvProfileSection .skillHobbyDiv, .cvContainer .cvProfileSection .personSkills {
+.cvContainer .cvProfileSection .skillHobbyDiv,
+.cvContainer .cvProfileSection .personSkills {
   margin-bottom: 2rem;
 }
 
@@ -616,5 +640,16 @@ body {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  background: var(--BgColor);
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primaryColor);
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

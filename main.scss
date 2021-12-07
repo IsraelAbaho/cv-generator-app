@@ -7,8 +7,10 @@
 }
 
 :root {
-  --primaryColor: rgb(61, 61, 61);
+  --primaryColor: rgb(121, 157, 224);
   --secondaryColor: whitesmoke;
+  --inputColor: #d6e6e7a4;
+  
 }
 
 * {
@@ -16,10 +18,12 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "M PLUS Code Latin", sans-serif;
+  transition: 1s ease-in-out;
 }
 
 section {
   margin-bottom: 3rem;
+  color: rgb(10, 52, 107);
 }
 
 .grid {
@@ -42,7 +46,7 @@ textarea {
   border-radius: 5px;
   border: 2px solid transparent;
   width: 100%;
-  background: rgb(223, 222, 222);
+  background: var(--inputColor);
 }
 input:focus {
   outline: none;
@@ -72,8 +76,6 @@ body {
   }
 }
 
-
-
 .introTxt {
   margin-bottom: 1rem;
   font-size: 20px;
@@ -86,8 +88,17 @@ body {
   text-align: center;
   background: var(--primaryColor);
   color: var(--secondaryColor);
+  h1{
+    @include breakpoint(1080px){
+      font-size: 45px;
+    }
+  }
   p {
     padding: 10px 0 0;
+    margin: auto;
+    @include breakpoint(1080px){
+      font-size: 25px;
+    }
   }
 }
 
@@ -108,19 +119,17 @@ body {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      
     }
 
     #file {
       display: none;
-     
     }
     #imgBtn {
       position: absolute;
       width: 100%;
       background: #000000a6;
       text-align: center;
-      padding: 0.7rem 0.7rem .8rem;
+      padding: 0.7rem 0.7rem 0.8rem;
       bottom: -10px;
       left: 0;
       color: var(--secondaryColor);
@@ -138,6 +147,7 @@ body {
     input {
       display: block;
       margin: 8px 0;
+      background: var(--inputColor);
     }
   }
 
@@ -160,6 +170,7 @@ body {
   }
   input {
     margin-top: 5px;
+    background: var(--inputColor);
   }
   .date {
     margin: 1rem 0;
@@ -207,6 +218,7 @@ body {
   input,
   textarea {
     margin-top: 10px;
+    background: var(--inputColor);
   }
 
   .date {
@@ -224,8 +236,7 @@ body {
     height: 200px;
   }
   .flex {
-    @include breakpoint(480px){
-
+    @include breakpoint(480px) {
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -233,7 +244,6 @@ body {
   }
   .skills,
   .hobbies {
-    
     button {
       padding: 10px;
       border-radius: 5px;
@@ -295,6 +305,7 @@ body {
   align-items: center;
   justify-content: center;
   background: rgba(12, 14, 44, 0.698);
+  display: none;
 
   .opennerContent {
     padding: 2rem;
@@ -316,17 +327,14 @@ body {
         font-size: 30px;
         line-height: 2.4rem;
       }
-      
     }
     h5 {
       font-size: 15px;
       @include breakpoint(480px) {
-       font-size: 25px;
-        
+        font-size: 25px;
       }
       @include breakpoint(1080px) {
-       font-size: 25px;
-        
+        font-size: 25px;
       }
     }
     p {
@@ -341,158 +349,156 @@ body {
     }
   }
 }
-.jobMessage{
+.jobMessage {
   display: none;
   color: red;
 }
-.ColMessage{
+.ColMessage {
   display: none;
   color: red;
 }
-
 
 // MAIN CV SCSS --------------------------------->
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
-  .titles{
+  display: none;
+  color: rgb(10, 52, 107);
+  .titles {
     margin-bottom: 1rem;
     position: relative;
     width: max-content;
-    &::after{
-      content: '';
+    &::after {
+      content: "";
       position: absolute;
       background-color: rgb(143, 143, 143);
       height: 2px;
       width: 50%;
       bottom: -5px;
       left: 0;
-
     }
   }
 
-  .cvTop{
-    @include breakpoint(960px){
+  .cvTop {
+    @include breakpoint(960px) {
       display: grid;
       align-items: center;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
-    .cvTopDiv{
+    .cvTopDiv {
       width: 100%;
       max-width: 200px;
       height: 200px;
       background-color: antiquewhite;
-      img{
+      img {
         object-fit: cover;
         width: 100%;
         height: 100%;
       }
     }
-    .cvNameDiv{
+    .cvNameDiv {
       margin: 1rem 0;
-      @include breakpoint(960px){
+      @include breakpoint(960px) {
         font-size: 24px;
       }
-      .cvProff p{
+      .cvProff p {
         font-size: 25px;
-        @include breakpoint(960px){
+        @include breakpoint(960px) {
           font-size: 30px;
         }
       }
-      
     }
-    .cvContactDiv div{
+    .cvContactDiv div {
       display: flex;
       align-items: center;
       gap: 10px;
-      p{
+      p {
         font-size: 18px;
-        @include breakpoint(960px){
+        @include breakpoint(960px) {
           line-height: 2rem;
           font-size: 20px;
         }
       }
     }
   }
-  .cvExperienceDiv{
+  .cvExperienceDiv {
     padding: 10px;
-    .companyDetails{
-      margin-bottom: .6rem;
-      div p{
+    .companyDetails {
+      margin-bottom: 0.6rem;
+      div p {
         font-size: 18px;
       }
-      .companyName{
+      .companyName {
         font-weight: 500;
       }
     }
-    .dates{
+    .dates {
       display: flex;
       position: relative;
       width: max-content;
       gap: 1rem;
-      &::after{
-        content: '';
+      &::after {
+        content: "";
         height: 3px;
-        width:6px;
-        background:var(--primaryColor);
+        width: 6px;
+        background: var(--primaryColor);
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translateX(-2.5px);
       }
-     div{
-      padding: 8px;
-      background-color: var(--primaryColor);
-      color: var(--secondaryColor);
-      font-size: 15px;
-     
-     }
+      div {
+        padding: 8px;
+        background-color: var(--primaryColor);
+        color: var(--secondaryColor);
+        font-size: 15px;
+      }
     }
-    .jobDesc{
-      margin-top: .5rem;
-      opacity: .9;
+    .jobDesc {
+      margin-top: 0.5rem;
+      opacity: 0.9;
     }
   }
 
-  .cvProfileSection{
+  .cvProfileSection {
     background-color: rgba(185, 184, 184, 0.157);
     padding: 10px;
-    .pSummary p{
+    .pSummary p {
       margin-bottom: 1rem;
-      opacity: .9;
+      opacity: 0.9;
     }
-    .colCert h4+p{
+    .colCert h4 + p {
       margin-bottom: 10px;
     }
-    .collegeDatesDiv{
+    .collegeDatesDiv {
       display: flex;
       gap: 1rem;
       margin-bottom: 1rem;
       position: relative;
       width: max-content;
-      &::after{
-        content: '';
+      &::after {
+        content: "";
         height: 3px;
-        width:6px;
-        background:var(--primaryColor);
+        width: 6px;
+        background: var(--primaryColor);
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translateX(-2.5px);
       }
-     div{
-      padding: 8px;
-      background-color: var(--primaryColor);
-      color: var(--secondaryColor);
-      font-size: 15px;
-     }
+      div {
+        padding: 8px;
+        background-color: var(--primaryColor);
+        color: var(--secondaryColor);
+        font-size: 15px;
+      }
     }
-    .skillHobbyDiv, .personSkills{    
-        margin-bottom: 2rem;
+    .skillHobbyDiv,
+    .personSkills {
+      margin-bottom: 2rem;
     }
   }
 }
-
 
 // Media querries ===================================================
 
@@ -522,4 +528,16 @@ body {
   .top {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  background: var(--BgColor);
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primaryColor);
+ 
+  cursor: pointer;
 }
