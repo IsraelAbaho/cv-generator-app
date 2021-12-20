@@ -43,7 +43,8 @@ textarea {
   background: var(--inputColor);
 }
 
-input:focus {
+input,
+textarea:focus {
   outline: none;
 }
 
@@ -406,12 +407,12 @@ body {
   }
 }
 
-.jobMessage {
+#jobMessage {
   display: none;
   color: red;
 }
 
-.ColMessage {
+#ColMessage {
   display: none;
   color: red;
 }
@@ -419,7 +420,6 @@ body {
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
-  display: none;
   color: #0a346b;
 }
 
@@ -448,7 +448,7 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-grid-columns: (1fr)[3];
+  
         grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -555,6 +555,7 @@ body {
 }
 
 .cvContainer .cvExperienceDiv .jobDesc {
+  max-width: 100%;
   margin-top: 0.5rem;
   opacity: 0.9;
 }
@@ -565,6 +566,7 @@ body {
 }
 
 .cvContainer .cvProfileSection .pSummary p {
+  max-width: 100%;
   margin-bottom: 1rem;
   opacity: 0.9;
 }
@@ -609,11 +611,19 @@ body {
   margin-bottom: 2rem;
 }
 
+#downloadBtn {
+  background: #8bee8b;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 480px) {
   .gridCol {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[2];
+ 
         grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -623,7 +633,7 @@ body {
   .skillsGridCol {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[2];
+    
         grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -637,7 +647,7 @@ body {
 
 @media screen and (min-width: 900px) {
   .top {
-    -ms-grid-columns: (1fr)[3];
+  
         grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -650,6 +660,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primaryColor);
+  border-radius: 4px;
   cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

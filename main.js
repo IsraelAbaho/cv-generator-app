@@ -6,6 +6,12 @@ const personName = document.getElementById('name')
 const personTitle = document.getElementById('title')
 const personStartDate = document.getElementById('jobStartDate')
 const personEndDate = document.getElementById('jobEndDate')
+const colStartDate = document.getElementById('startDate')
+const colEndDate = document.getElementById('endDate')
+const jobMessage = document.getElementById('jobMessage')
+const ColMessage = document.getElementById('ColMessage')
+const desc = document.getElementById('desc')
+const skill = document.getElementById('skill')
 const topSection = document.getElementById('cvTop')
 const experienceSection = document.querySelector('.cvExperienceDiv')
 const cvProfileSection = document.querySelector('.cvProfileSection')
@@ -14,6 +20,51 @@ const mainButton = document.getElementById('previewBtn')
 const newExperienceDiv = document.getElementById('newExp') 
 const experienceBtn = document.getElementById('addCompBtn')
 
+let cvCont = document.getElementById('cvContainer')
+let downloadBtn = document.getElementById('downloadBtn')
+downloadBtn.onclick = (e) => html2pdf(cvCont)
+
+
+
+desc.addEventListener('click', ()=>{
+let start = personStartDate.value
+let end = personEndDate.value
+let s = new Date(start)
+let e = new Date(end)
+let currentDate = new Date()
+
+if(e <= s || s >= currentDate || e > currentDate){
+  jobMessage.style.display = 'block' 
+  desc.style.backgroundColor = '#ff000059'
+  personEndDate.style.border = '2px solid red'
+  desc.style.border = '2px solid red' 
+}else{
+  jobMessage.style.display = 'none' 
+  desc.style.backgroundColor = '#d6e6e7a4'
+  personEndDate.style.border = '2px solid transparent'
+  desc.style.border = '2px solid transparent'
+}
+})
+
+skill.addEventListener('click', ()=>{
+let cStart = colStartDate.value
+let cEnd = colEndDate.value
+let cS = new Date(cStart)
+let cE = new Date(cEnd)
+let currentDate = new Date()
+
+if(cE <= cS || cS >= currentDate || cE > currentDate){
+  ColMessage.style.display = 'block' 
+  skill.style.backgroundColor = '#ff000059'
+  colEndDate.style.border = '2px solid red'
+  skill.style.border = '2px solid red' 
+}else{
+  ColMessage.style.display = 'none' 
+  skill.style.backgroundColor = '#d6e6e7a4'
+  colEndDate.style.border = '2px solid transparent'
+  skill.style.border = '2px solid transparent'
+}
+})
 
 
 // Function to change image
@@ -76,6 +127,10 @@ function canWeSubmitForm(e) {
     })
   });
 
+  
+  
+  
+
   // every time the form submits it checks to see if the list of inputs that
   // need values is empty. If it is not empty...
   if (needInputArray.length !== 0) {
@@ -89,23 +144,28 @@ function canWeSubmitForm(e) {
     });
 
     // However the else works if the need input array list IS empty...
-  } else {
+  } 
+
+  else {
     // if it is then we call our submit form function and pass the button as a parameter(or argument)
     // instead of the click event. This way you can still create your form based on the btn 
     submitForm(btn);
+    
   }
 };
 
 function submitForm(btn){
   
-  cvContainer.style.display = 'block'
-  mainButton.style.display = 'none'
+  // cvContainer.style.display = 'block'
+  // downloadBtn.style.display = 'block'
+  // mainButton.style.display = 'none'
     // personalDetails Declaration
   // The btn is now passed as a parameter from the function call on line 95 instead of the original click 
   // event, but it still works exactly the same.
     let pImage = btn.parentElement.parentElement.children[0].children[0].children[0].src
 
     let pName = btn.parentElement.parentElement.children[0].children[1].children[1].children[1].value
+    
 
     let pTitle = btn.parentElement.parentElement.children[0].children[1].children[2].children[1].value
    
@@ -273,7 +333,7 @@ cvProfileSection.appendChild(pSummary)
 cvProfileSection.appendChild(collegeCert)
 cvProfileSection.appendChild(collegeDates)
 cvProfileSection.appendChild(skillHobby)
-  
 };
  
+
 

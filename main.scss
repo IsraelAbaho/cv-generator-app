@@ -10,7 +10,6 @@
   --primaryColor: rgb(121, 157, 224);
   --secondaryColor: whitesmoke;
   --inputColor: #d6e6e7a4;
-  
 }
 
 * {
@@ -48,7 +47,8 @@ textarea {
   width: 100%;
   background: var(--inputColor);
 }
-input:focus {
+input,
+textarea:focus {
   outline: none;
 }
 img {
@@ -88,15 +88,15 @@ body {
   text-align: center;
   background: var(--primaryColor);
   color: var(--secondaryColor);
-  h1{
-    @include breakpoint(1080px){
+  h1 {
+    @include breakpoint(1080px) {
       font-size: 45px;
     }
   }
   p {
     padding: 10px 0 0;
     margin: auto;
-    @include breakpoint(1080px){
+    @include breakpoint(1080px) {
       font-size: 25px;
     }
   }
@@ -349,11 +349,11 @@ body {
     }
   }
 }
-.jobMessage {
+#jobMessage {
   display: none;
   color: red;
 }
-.ColMessage {
+#ColMessage {
   display: none;
   color: red;
 }
@@ -362,7 +362,7 @@ body {
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
-  display: none;
+  // display: none;
   color: rgb(10, 52, 107);
   .titles {
     margin-bottom: 1rem;
@@ -455,6 +455,8 @@ body {
       }
     }
     .jobDesc {
+     
+      max-width: 100%;
       margin-top: 0.5rem;
       opacity: 0.9;
     }
@@ -464,6 +466,8 @@ body {
     background-color: rgba(185, 184, 184, 0.157);
     padding: 10px;
     .pSummary p {
+     
+      max-width: 100%;
       margin-bottom: 1rem;
       opacity: 0.9;
     }
@@ -498,6 +502,15 @@ body {
       margin-bottom: 2rem;
     }
   }
+}
+
+#downloadBtn {
+  // display: none;
+  background: rgb(139, 238, 139);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 // Media querries ===================================================
@@ -538,6 +551,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--primaryColor);
- 
+  border-radius: 4px;
   cursor: pointer;
 }
