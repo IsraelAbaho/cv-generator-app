@@ -449,7 +449,7 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-  
+   
         grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -621,11 +621,15 @@ body {
   cursor: pointer;
 }
 
+#downloadBtn:hover {
+  background: #6cbe6c;
+}
+
 @media screen and (min-width: 480px) {
   .gridCol {
     display: -ms-grid;
     display: grid;
- 
+  
         grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -635,7 +639,7 @@ body {
   .skillsGridCol {
     display: -ms-grid;
     display: grid;
-
+  
         grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -649,7 +653,7 @@ body {
 
 @media screen and (min-width: 900px) {
   .top {
- 
+
         grid-template-columns: repeat(3, 1fr);
   }
 }

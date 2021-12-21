@@ -509,6 +509,9 @@ body {
   padding: 1rem 2rem;
   font-size: 15px;
   cursor: pointer;
+  &:hover{
+    background: rgb(108, 190, 108);
+  }
 }
 
 // Media querries ===================================================
