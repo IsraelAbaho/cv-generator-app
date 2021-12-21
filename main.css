@@ -420,6 +420,7 @@ body {
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
+  display: none;
   color: #0a346b;
 }
 
@@ -612,6 +613,7 @@ body {
 }
 
 #downloadBtn {
+  display: none;
   background: #8bee8b;
   border: none;
   padding: 1rem 2rem;
@@ -633,7 +635,7 @@ body {
   .skillsGridCol {
     display: -ms-grid;
     display: grid;
-    
+
         grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -647,7 +649,7 @@ body {
 
 @media screen and (min-width: 900px) {
   .top {
-  
+ 
         grid-template-columns: repeat(3, 1fr);
   }
 }

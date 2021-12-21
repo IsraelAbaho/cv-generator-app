@@ -156,9 +156,9 @@ function canWeSubmitForm(e) {
 
 function submitForm(btn){
   
-  // cvContainer.style.display = 'block'
-  // downloadBtn.style.display = 'block'
-  // mainButton.style.display = 'none'
+  cvContainer.style.display = 'block'
+  downloadBtn.style.display = 'block'
+  mainButton.style.display = 'none'
     // personalDetails Declaration
   // The btn is now passed as a parameter from the function call on line 95 instead of the original click 
   // event, but it still works exactly the same.

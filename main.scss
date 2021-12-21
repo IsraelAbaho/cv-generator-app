@@ -362,7 +362,7 @@ body {
 .cvContainer {
   margin-top: 2rem;
   background-color: rgba(204, 204, 204, 0.157);
-  // display: none;
+  display: none;
   color: rgb(10, 52, 107);
   .titles {
     margin-bottom: 1rem;
@@ -455,7 +455,6 @@ body {
       }
     }
     .jobDesc {
-     
       max-width: 100%;
       margin-top: 0.5rem;
       opacity: 0.9;
@@ -466,7 +465,6 @@ body {
     background-color: rgba(185, 184, 184, 0.157);
     padding: 10px;
     .pSummary p {
-     
       max-width: 100%;
       margin-bottom: 1rem;
       opacity: 0.9;
@@ -505,7 +503,7 @@ body {
 }
 
 #downloadBtn {
-  // display: none;
+  display: none;
   background: rgb(139, 238, 139);
   border: none;
   padding: 1rem 2rem;
